@@ -14,12 +14,10 @@ class MovieListController{
 
   void init(){
     getMovies();
-
   }
 
-  void getMovies() async{
+  Future<void> getMovies() async{
     var result = await api.getMovies();
-    print(result);
     _controller.sink.add(result);
   }
 }

@@ -3,7 +3,7 @@ import 'package:app_filmes/data/models/movie_comment.dart';
 class Movie {
   Movie({
     required this.id,
-    required this.nome,
+    required this.name,
     required this.year,
     required this.duration,
     required this.description,
@@ -13,7 +13,7 @@ class Movie {
   });
 
   final int id;
-  final String nome;
+  final String name;
   final int year;
   final int duration;
   final String description;
@@ -24,12 +24,12 @@ class Movie {
 
   factory Movie.fromJson(Map<String, dynamic> json) => Movie(
     id: json['id'], 
-    nome: json['nome'],
+    name: json['name'],
     year: json['year'],
     duration: json['duration'] ,
     description: json['description'],
     gender: json['gender'],
     urlImage: json['url_image'],
-    comments: ( (json['comments'] ?? []) as List).map((item) => MovieComment.fromJson(item)).toList(),
+    comments: ((json['comments'] ?? []) as List).map((item) => MovieComment.fromJson(item)).toList(),
   );
 }

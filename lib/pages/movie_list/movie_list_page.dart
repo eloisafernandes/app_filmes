@@ -15,7 +15,6 @@ class _MovieListPage extends State<MovieListPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     controller.init();
     super.initState();
   }
@@ -24,7 +23,7 @@ class _MovieListPage extends State<MovieListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Movie App'),
+        title: const Text('Movie App'),
         actions: [
           IconButton(
             onPressed: (){}, 
@@ -36,6 +35,7 @@ class _MovieListPage extends State<MovieListPage> {
         stream: controller.stream,
         builder:(context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting){
+            print(snapshot);
             return Text("Waiting...");
           }
 
@@ -45,10 +45,9 @@ class _MovieListPage extends State<MovieListPage> {
             itemBuilder: (context, index) {
               var movie = movies[index];
               return ListTile(
-                title: Text(movie.nome),
+                title: Text(movie.name),
               );
             },
-            
           );
         },
       )
