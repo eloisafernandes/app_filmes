@@ -1,6 +1,8 @@
 import 'package:app_filmes/data/models/movie.dart';
 import 'package:app_filmes/pages/movie_list/movie_list_controller.dart';
+import 'package:app_filmes/pages/movie_list/widgets/movie_item_widget.dart';
 import 'package:app_filmes/service_locator.dart';
+import 'package:app_filmes/widgets/progress_indicator_widget.dart';
 import 'package:flutter/material.dart';
 
 class MovieListPage extends StatefulWidget {
@@ -35,8 +37,7 @@ class _MovieListPage extends State<MovieListPage> {
         stream: controller.stream,
         builder:(context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting){
-            print(snapshot);
-            return Text("Waiting...");
+            return ProgressIndicatorWidget();
           }
 
           var movies = snapshot.data!;
@@ -44,9 +45,7 @@ class _MovieListPage extends State<MovieListPage> {
             itemCount: movies.length,
             itemBuilder: (context, index) {
               var movie = movies[index];
-              return ListTile(
-                title: Text(movie.name),
-              );
+              return MovieItemWidget(movie: movie);
             },
           );
         },
