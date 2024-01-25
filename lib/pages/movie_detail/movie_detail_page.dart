@@ -1,8 +1,8 @@
 import 'package:app_filmes/data/models/movie.dart';
 import 'package:app_filmes/pages/movie_detail/movie_detail_controller.dart';
+import 'package:app_filmes/pages/movie_detail/widgets/movie_detail_about_widget.dart';
 import 'package:app_filmes/pages/movie_detail/widgets/movie_detail_cover_widget.dart';
 import 'package:app_filmes/service_locator.dart';
-import 'package:app_filmes/widgets/progress_indicator_widget.dart';
 import 'package:flutter/material.dart';
 
 class MovieDetailPage extends StatefulWidget {
@@ -33,7 +33,6 @@ class _MovieDetailPage extends State<MovieDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: StreamBuilder<Movie>(
         initialData: widget.movie,
         stream: controller.stream,
@@ -41,7 +40,8 @@ class _MovieDetailPage extends State<MovieDetailPage> {
           var movie = snapshot.data!;
           return CustomScrollView(
             slivers: [
-              MovieDetailCoverWidget(movie: movie)
+              MovieDetailCoverWidget(movie: movie),
+              MovieDetailAboutWidget(movie: movie),
             ],
           );
         },
