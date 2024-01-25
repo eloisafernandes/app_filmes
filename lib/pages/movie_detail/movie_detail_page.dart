@@ -1,5 +1,6 @@
 import 'package:app_filmes/data/models/movie.dart';
 import 'package:app_filmes/pages/movie_detail/movie_detail_controller.dart';
+import 'package:app_filmes/pages/movie_detail/widgets/movie_detail_cover_widget.dart';
 import 'package:app_filmes/service_locator.dart';
 import 'package:app_filmes/widgets/progress_indicator_widget.dart';
 import 'package:flutter/material.dart';
@@ -31,21 +32,18 @@ class _MovieDetailPage extends State<MovieDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-
-    var movie = widget.movie;
-
     return Scaffold(
       appBar: AppBar(),
       body: StreamBuilder<Movie>(
+        initialData: widget.movie,
         stream: controller.stream,
         builder:(context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting){
-            return const ProgressIndicatorWidget();
-          }
-
-          //var movies = snapshot.data!;
-
-          return Text(movie.name);
+          var movie = snapshot.data!;
+          return CustomScrollView(
+            slivers: [
+              MovieDetailCoverWidget(movie: movie)
+            ],
+          );
         },
       )
 
