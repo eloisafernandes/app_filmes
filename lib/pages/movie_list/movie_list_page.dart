@@ -37,7 +37,7 @@ class _MovieListPage extends State<MovieListPage> {
         stream: controller.stream,
         builder:(context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting){
-            return ProgressIndicatorWidget();
+            return const ProgressIndicatorWidget();
           }
 
           var movies = snapshot.data!;

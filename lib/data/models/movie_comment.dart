@@ -8,6 +8,6 @@ class MovieComment{
   factory MovieComment.fromJson(Map<String, dynamic> json) => MovieComment(
     id: json['id'], 
     comment: json['comment'], 
-    createdAt: json['date_created']
+    createdAt: DateTime.parse(json['date_created']),
   );
 }

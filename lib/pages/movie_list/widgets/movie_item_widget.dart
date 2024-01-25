@@ -1,4 +1,5 @@
 import 'package:app_filmes/data/models/movie.dart';
+import 'package:app_filmes/pages/movie_detail/movie_detail_page.dart';
 import 'package:duration/duration.dart';
 import 'package:flutter/material.dart';
 
@@ -63,7 +64,11 @@ class MovieItemWidget extends StatelessWidget {
         ],
       ),
       onTap: () {
-        print(movie.id);
+        Navigator.push(
+          context, 
+          MaterialPageRoute(builder: (context) => MovieDetailPage(movie: movie),
+          )
+        );
       },
     );
   }
