@@ -18,6 +18,7 @@ class _MovieListPage extends State<MovieListPage> {
 
   @override
   void initState() {
+    
     controller.init();
     super.initState();
   }
