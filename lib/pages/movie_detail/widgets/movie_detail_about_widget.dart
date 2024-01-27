@@ -11,6 +11,7 @@ class MovieDetailAboutWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Container(
+        color: Theme.of(context).scaffoldBackgroundColor,
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start, 

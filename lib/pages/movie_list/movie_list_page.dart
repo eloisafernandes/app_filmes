@@ -1,5 +1,6 @@
 import 'package:app_filmes/data/models/movie.dart';
 import 'package:app_filmes/pages/movie_list/movie_list_controller.dart';
+import 'package:app_filmes/pages/movie_list/movie_search_delegate.dart';
 import 'package:app_filmes/pages/movie_list/widgets/movie_item_widget.dart';
 import 'package:app_filmes/service_locator.dart';
 import 'package:app_filmes/widgets/progress_indicator_widget.dart';
@@ -28,7 +29,9 @@ class _MovieListPage extends State<MovieListPage> {
         title: const Text('Movie App'),
         actions: [
           IconButton(
-            onPressed: (){}, 
+            onPressed: (){
+              showSearch(context: context, delegate: MovieSearchDelegate());
+            }, 
             icon: const Icon(Icons.search))
         ],
 

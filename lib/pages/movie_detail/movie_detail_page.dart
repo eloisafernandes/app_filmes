@@ -1,5 +1,6 @@
 import 'package:app_filmes/data/models/movie.dart';
 import 'package:app_filmes/pages/movie_detail/movie_detail_controller.dart';
+import 'package:app_filmes/pages/movie_detail/widgets/add_comment_widget.dart';
 import 'package:app_filmes/pages/movie_detail/widgets/movie_detail_about_widget.dart';
 import 'package:app_filmes/pages/movie_detail/widgets/movie_detail_comments_widget.dart';
 import 'package:app_filmes/pages/movie_detail/widgets/movie_detail_cover_widget.dart';
@@ -35,6 +36,7 @@ class _MovieDetailPage extends State<MovieDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.alphaBlend(Colors.black12, Theme.of(context).scaffoldBackgroundColor,),
       body: StreamBuilder<Movie>(
         initialData: widget.movie,
         stream: controller.stream,
@@ -46,7 +48,7 @@ class _MovieDetailPage extends State<MovieDetailPage> {
               MovieDetailAboutWidget(movie: movie),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: EdgeInsets.only(top: 32, left: 16, right: 16),
+                  padding: EdgeInsets.only(top: 16, left: 16, right: 16),
                   child: Text(
                     "Comentários",
                     style: Theme.of(context).textTheme.titleMedium,
@@ -70,8 +72,9 @@ class _MovieDetailPage extends State<MovieDetailPage> {
                   ),
                   
                 )
-              else
-                MovieDetailCommentWidget(movie: movie)
+              else MovieDetailCommentWidget(movie: movie),
+              const AddCommentWidget(),
+              
 
             ],
           );
