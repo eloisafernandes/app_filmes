@@ -55,9 +55,7 @@ class MovieDetailCoverWidget extends StatelessWidget {
                   }
                 ),
               )
-              
             )
-
           ],
         ),
       ),
